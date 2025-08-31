@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mak3r - Revolutionary SaaS Platform Coming Soon</title>
+    <meta
+      name="description"
+      content="mak3r - The next-generation SaaS platform for modern businesses. Professional tools, AI-powered solutions, launching soon."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Updated fonts to match design brief: Space Grotesk for headlines, DM Sans for body -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        /* Updated primary color to requested blue #0037FF */
+        --color-primary: #0037ff;
+        --color-accent: #10b981;
+        --color-foreground: #475569;
+        --color-background: #ffffff;
+        --color-muted: #f1f5f9;
+        --color-muted-foreground: #94a3b8;
+        --color-border: #e5e7eb;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        /* Clean white background with subtle gradient for depth */
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        color: var(--color-foreground);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      /* Subtle geometric background pattern for modern SaaS feel */
+      .background-pattern {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+            circle at 25% 25%,
+            rgba(5, 150, 105, 0.05) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 75% 75%,
+            rgba(16, 185, 129, 0.05) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* Floating elements for visual interest */
+      .floating-elements {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 2;
+      }
+
+      .floating-element {
+        position: absolute;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+        border-radius: 50%;
+        opacity: 0.1;
+        animation: float linear infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.1;
+        }
+        90% {
+          opacity: 0.1;
+        }
+        100% {
+          transform: translateY(-100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .content {
+        text-align: center;
+        z-index: 10;
+        position: relative;
+        max-width: 800px;
+        padding: 4rem 2rem;
+        /* Clean card design with subtle shadow */
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 24px;
+        border: 1px solid var(--color-border);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      /* Professional headline using Space Grotesk */
+      .main-text {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: clamp(3rem, 8vw, 5rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+      }
+
+      .typewriter {
+        overflow: hidden;
+        border-right: 3px solid var(--color-primary);
+        white-space: nowrap;
+        animation: typing 2s steps(6, end) 0.5s both,
+          blink-caret 1s step-end infinite 2.5s;
+        color: var(--color-foreground);
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink-caret {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: var(--color-primary);
+        }
+      }
+
+      /* Professional subtitle styling */
+      .subtitle {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: clamp(1.2rem, 3vw, 1.8rem);
+        color: var(--color-muted-foreground);
+        letter-spacing: 0.05em;
+        opacity: 0;
+        animation: fade-in-up 1s ease-out 3s both;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Professional tagline with better spacing */
+      .tagline {
+        font-family: "DM Sans", sans-serif;
+        font-size: clamp(1rem, 2.5vw, 1.3rem);
+        color: var(--color-foreground);
+        letter-spacing: 0.01em;
+        opacity: 0;
+        animation: fade-in-up 1s ease-out 4s both;
+        font-weight: 400;
+        line-height: 1.6;
+        max-width: 600px;
+        margin: 0 auto 3rem;
+      }
+
+      /* Professional CTA button design */
+      .cta-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 2.5rem;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+        color: white;
+        text-decoration: none;
+        border-radius: 12px;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 600;
+        font-size: 1.1rem;
+        letter-spacing: 0.01em;
+        opacity: 0;
+        animation: fade-in-scale 1s ease-out 5s both;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 14px 0 rgba(5, 150, 105, 0.3);
+      }
+
+      .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px 0 rgba(5, 150, 105, 0.4);
+      }
+
+      /* Subtle corner accents for professional touch */
+      .corner-accent {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        border: 2px solid var(--color-accent);
+        pointer-events: none;
+        z-index: 5;
+        opacity: 0.3;
+        border-radius: 8px;
+      }
+
+      .corner-accent.top-left {
+        top: 2rem;
+        left: 2rem;
+        border-right: none;
+        border-bottom: none;
+        animation: gentle-pulse 4s ease-in-out infinite;
+      }
+
+      .corner-accent.bottom-right {
+        bottom: 2rem;
+        right: 2rem;
+        border-left: none;
+        border-top: none;
+        animation: gentle-pulse 4s ease-in-out infinite 2s;
+      }
+
+      @keyframes gentle-pulse {
+        0%,
+        100% {
+          opacity: 0.3;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.6;
+          transform: scale(1.05);
+        }
+      }
+
+      @keyframes fade-in-up {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fade-in-scale {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* Added countdown timer styles */
+      .countdown-container {
+        margin: 2rem 0;
+        opacity: 0;
+        animation: fade-in-up 1s ease-out 3.5s both;
+      }
+
+      .countdown-timer {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .countdown-item {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid var(--color-border);
+        border-radius: 12px;
+        padding: 1rem 0.8rem;
+        min-width: 80px;
+        backdrop-filter: blur(5px);
+      }
+
+      .countdown-number {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        display: block;
+        line-height: 1;
+      }
+
+      .countdown-label {
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.75rem;
+        color: var(--color-muted-foreground);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-top: 0.25rem;
+        font-weight: 500;
+      }
+
+      .countdown-message {
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.9rem;
+        color: var(--color-muted-foreground);
+        text-align: center;
+      }
+
+      /* Enhanced responsive design for mobile */
+      @media (max-width: 768px) {
+        .content {
+          padding: 3rem 1.5rem;
+          margin: 1rem;
+        }
+
+        .main-text {
+          letter-spacing: -0.01em;
+        }
+
+        .subtitle {
+          letter-spacing: 0.03em;
+          margin-bottom: 1rem;
+        }
+
+        .tagline {
+          margin-bottom: 2rem;
+        }
+
+        .cta-button {
+          padding: 0.9rem 2rem;
+          font-size: 1rem;
+        }
+
+        .corner-accent {
+          width: 40px;
+          height: 40px;
+        }
+
+        .corner-accent.top-left {
+          top: 1rem;
+          left: 1rem;
+        }
+
+        .corner-accent.bottom-right {
+          bottom: 1rem;
+          right: 1rem;
+        }
+
+        .countdown-timer {
+          gap: 1rem;
+        }
+
+        .countdown-item {
+          padding: 0.8rem 0.6rem;
+          min-width: 70px;
+        }
+
+        .countdown-number {
+          font-size: 1.5rem;
+        }
+
+        .countdown-label {
+          font-size: 0.7rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .content {
+          padding: 2.5rem 1rem;
+        }
+
+        .cta-button {
+          padding: 0.8rem 1.5rem;
+          font-size: 0.95rem;
+        }
+
+        .countdown-timer {
+          gap: 0.8rem;
+        }
+
+        .countdown-item {
+          padding: 0.7rem 0.5rem;
+          min-width: 60px;
+        }
+
+        .countdown-number {
+          font-size: 1.3rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background-pattern"></div>
+    <div class="floating-elements" id="floatingContainer"></div>
+
+    <div class="corner-accent top-left"></div>
+    <div class="corner-accent bottom-right"></div>
+
+    <div class="content">
+      <!-- Updated content for professional SaaS messaging -->
+      <h1 class="main-text typewriter">mak3r</h1>
+      <p class="subtitle">Enterprise SaaS Platform</p>
+
+      <!-- Added countdown timer section -->
+      <div class="countdown-container">
+        <div class="countdown-timer" id="countdown">
+          <div class="countdown-item">
+            <span class="countdown-number" id="days">00</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="hours">00</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="minutes">00</span>
+            <span class="countdown-label">Minutes</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="seconds">00</span>
+            <span class="countdown-label">Seconds</span>
+          </div>
+        </div>
+        <p class="countdown-message">Until launch</p>
+      </div>
+
+      <p class="tagline">
+        Advanced productivity tools and AI-powered solutions designed for modern
+        businesses and development teams. Experience the future of workflow
+        automation.
+      </p>
+      <a
+        href="https://discord.gg/your-server-id"
+        class="cta-button"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"
+          />
+        </svg>
+        Join Our Community
+      </a>
+    </div>
+
+    <script>
+      function createFloatingElement() {
+        const element = document.createElement("div");
+        element.className = "floating-element";
+
+        const size = Math.random() * 20 + 10;
+        element.style.width = size + "px";
+        element.style.height = size + "px";
+        element.style.left = Math.random() * 100 + "%";
+
+        const duration = Math.random() * 15 + 10;
+        element.style.animationDuration = duration + "s";
+        element.style.animationDelay = Math.random() * 5 + "s";
+
+        document.getElementById("floatingContainer").appendChild(element);
+
+        setTimeout(() => {
+          if (element.parentNode) {
+            element.parentNode.removeChild(element);
+          }
+        }, (duration + 5) * 1000);
+      }
+
+      function startFloatingElements() {
+        createFloatingElement();
+        setTimeout(startFloatingElements, Math.random() * 3000 + 2000);
+      }
+
+      function optimizeForMobile() {
+        if (window.innerWidth < 768) {
+          const elements = document.querySelectorAll(".floating-element");
+          if (elements.length > 8) {
+            for (let i = 8; i < elements.length; i++) {
+              elements[i].remove();
+            }
+          }
+        }
+      }
+
+      function initCountdown() {
+        // Set launch date to 15 days from now
+        const launchDate = new Date();
+        launchDate.setDate(launchDate.getDate() + 15);
+
+        function updateCountdown() {
+          const now = new Date().getTime();
+          const distance = launchDate.getTime() - now;
+
+          if (distance < 0) {
+            document.getElementById("countdown").innerHTML =
+              '<div class="countdown-item"><span class="countdown-number">LAUNCHED!</span></div>';
+            return;
+          }
+
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor(
+            (distance % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          document.getElementById("days").textContent = days
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("hours").textContent = hours
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("minutes").textContent = minutes
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("seconds").textContent = seconds
+            .toString()
+            .padStart(2, "0");
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+      }
+
+      window.addEventListener("load", () => {
+        startFloatingElements();
+        setInterval(optimizeForMobile, 5000);
+        initCountdown();
+      });
+    </script>
+  </body>
+</html>
